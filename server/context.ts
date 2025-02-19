@@ -25,17 +25,9 @@ export const createContextInner = async (opts: CreateContextOptions) => {
 /**
  * Context creator for Next.js tRPC API endpoints
  */
-export const createContext = async (opts: CreateNextContextOptions) => {
-  const { req, res } = opts;
-
-  const contextInner = await createContextInner({
-    // Add your context options here
-  });
-
+export const createContext = async (opts: { req: Request }) => {
   return {
-    ...contextInner,
-    req,
-    res,
+    req: opts.req,
   };
 };
 
